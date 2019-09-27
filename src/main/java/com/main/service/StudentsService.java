@@ -2,28 +2,25 @@ package com.main.service;
 
 import java.time.LocalDate;
 
-import com.main.model.Students;
-
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import com.main.model.Students;
 
 public interface StudentsService {
 
+  Mono<Students> createStudent(Students student);
 
-	
-	Flux<Students> getAll();
+  Mono<Void> deleteById(String id);
 
-	Mono<Students> findByFullname(String fullname);
+  Flux<Students> findByBirthdateBetween(LocalDate from, LocalDate to);
 
-	Mono<Students> findByDocument(String document); 
+  Mono<Students> findByDocument(String document);
 
-	Flux<Students>findByBirthdateBetween(LocalDate from, LocalDate to);	
+  Mono<Students> findByFullname(String fullname);
 
-	Mono<Students> createStudent( Students student);
+  Mono<Students> findbyId(String id);
 
-	Mono<Students> modifyStudent(String id, Students student);
+  Flux<Students> getAll();
 
-	Mono<Void> deleteById(String id);
-
-	Mono<Students> findbyId(String id);
+  Mono<Students> modifyStudent(String id, Students student);
 }
